@@ -37,9 +37,9 @@
 	<input id ="fromEmailText" style="visibility:hidden" value =${userEmailId} type ="text" name="enterMail"/><br/>
 	<input id ="passwordText"  style="visibility:hidden" value =${uPassW} type ="text" name="userPass"/>		
 	<label id="toEmailLabel">Send To:</label>
-	<input id ="toEmailText" type ="text" autocomplete="on" pattern="\b^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$\b" title="Enter Gmail Address" name="enterToEmail" ${disableDestinationEmail}><br/>
+	<input id ="toEmailText" type ="text" autocomplete="off" pattern="\b^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$\b" title="Enter Gmail Address" name="enterToEmail" ${disableDestinationEmail}><br/>
 	<label id="subjectLabel">Subject: </label>
-	<input id ="subjectTextBox" type ="text" autocomplete="on" name="enterSubjectl" ${disableDestinationEmail}><br/>
+	<input id ="subjectTextBox" type ="text" autocomplete="off" name="enterSubjectl" ${disableDestinationEmail}><br/>
 	<label id="message">Enter Message:</label><br/>
 	<textarea id ="textArea1" name="message" rows="4" cols="50" ${disableDestinationEmail}></textarea> 
 	<input class="button" id ="sendMailButton" type="submit" onclick="return checkIfMailCanSend();"value="Send Email"/>	

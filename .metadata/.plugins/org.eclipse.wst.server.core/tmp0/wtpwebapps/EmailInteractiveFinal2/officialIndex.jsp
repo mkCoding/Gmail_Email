@@ -39,7 +39,7 @@
 	<label id="toEmailLabel">Send To:</label>
 	<input id ="toEmailText" type ="text" autocomplete="on" pattern="\b^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$\b" title="Enter Gmail Address" name="enterToEmail" ${disableDestinationEmail}><br/>
 	<label id="subjectLabel">Subject: </label>
-	<input id ="subjectTextBox" type ="text" name="enterSubjectl" ${disableDestinationEmail}><br/>
+	<input id ="subjectTextBox" type ="text" autocomplete="on" name="enterSubjectl" ${disableDestinationEmail}><br/>
 	<label id="message">Enter Message:</label><br/>
 	<textarea id ="textArea1" name="message" rows="4" cols="50" ${disableDestinationEmail}></textarea> 
 	<input class="button" id ="sendMailButton" type="submit" onclick="return checkIfMailCanSend();"value="Send Email"/>	
@@ -59,9 +59,9 @@
 		</div>
 		<div class="form-title">Email</div>
 		<!-- Only allows gmail email addresses -->
-		<input class="form-field" id ="emailID" autocomplete="on" type="text" name="email" pattern="\b^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$\b" title="Enter Gmail Address"/><br />
+		<input class="form-field" id ="emailID" autocomplete="off" type="text" name="email" pattern="\b^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$\b" title="Enter Gmail Address"/><br />
 		<div class="form-title">Password</div>
-		<input class="form-field" id ="passwordID" autocomplete="on" type="text" name="password" /><br />
+		<input class="form-field" id ="passwordID" autocomplete="off" type="password" name="password" /><br />
 		<p id ="invalidComboMessage" style="visibility:'${visableVal}'">**Invalid email/password combination**</p>
 		<div class="submit-container">
 		<input class="submit-button" id ="submitId" type="submit"  value="Submit" />

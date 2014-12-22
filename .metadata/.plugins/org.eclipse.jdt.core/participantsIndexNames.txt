@@ -1,3 +1,5 @@
 INDEX VERSION 1.126
 C:\Users\Computer Science\Desktop\InterActiveEmail\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3981030823.index
 \EmailInteractiveFinal2\src
+C:\Users\Computer Science\Documents\GitHub\EmailInteractiveProj\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3981030823.index
+\EmailInteractiveFinal2\src
