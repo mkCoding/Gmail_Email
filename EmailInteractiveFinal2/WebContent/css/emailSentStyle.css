@@ -1,0 +1,23 @@
+@CHARSET "ISO-8859-1";
+
+
+#sucessfulSendId
+{
+	color:white;
+	position: absolute;
+	width:325px;
+	top:100px;
+	left:470px;
+}
+
+#emailSentPicId{
+	position: absolute;
+	left:500px;
+	top:190px;
+}
+
+#sendAnotherEmailButton {
+	top: 450px;
+	position: absolute;
+	left: 500px;
+}

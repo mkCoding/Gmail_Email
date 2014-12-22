@@ -1,0 +1,128 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	background-image: url("../brickBackground.jpg");
+	background-repeat: no-repeat;	
+}
+
+#loginbutton22{
+	position:absolute;
+	left:20px;
+}
+
+
+#usernameDisplay{
+	position:absolute;
+	color:white;
+	left:140px;
+	top:3px;
+	font-size: x-large;
+}
+
+#sendEmailHeader{
+	color: white;
+    text-align:center;
+}
+
+#invalidComboMessage {
+	position:absolute;
+	font-size: 15px;
+	left:6px;
+	top:245px;
+	color:black;
+}
+#fromEmailLabel{
+	color: white;
+	position:absolute;
+	top:10px;
+}
+#fromEmailText{
+position:absolute;
+top:10px;
+left:150px
+}
+
+#toEmailLabel{
+	color: white;
+	font-size:xx-large;
+	position:absolute;
+	top:100px;
+	left:200px;
+}
+#toEmailText{
+	position:absolute;
+	height:40px;
+	width:400px;
+	font-size: xx-large;
+	left:200px;
+	top:140px
+	
+}
+
+#passwordLabel{
+	color: white;
+	position:absolute;
+	left:6px;
+	top:30px;
+	
+}
+
+#passwordText{
+	position:absolute;
+	top:30px;
+	left:130px;
+}
+
+
+
+#message{
+	color: white;
+	left:200px;
+	position:absolute;
+	top:285px;
+	font-size: xx-large;
+}
+
+#subjectLabel{
+	color: white;
+	font-size:xx-large;
+	left:200px;
+	top:190px;
+	position:absolute;
+}
+
+#subjectTextBox{
+	position:absolute;
+	left:200px;
+	height:40px;
+	width:800px;
+	font-size: xx-large;
+	top:230px;
+}
+
+#textArea1{
+	top:328px;
+	position:absolute;
+	left:200px;
+	font-size:xx-large;
+	height:251px;
+	width: 863px;
+}
+
+button {
+	color: #900;
+	font-weight: bold;
+	font-size: 150%;
+	text-transform: uppercase;
+	top:600px;;
+	position:absolute;
+	left:900px;
+}
+
+
+
+
+
+
+
+

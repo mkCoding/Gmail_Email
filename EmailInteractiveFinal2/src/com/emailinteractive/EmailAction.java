@@ -1,0 +1,147 @@
+package com.emailinteractive;
+import java.io.IOException;
+import java.util.Properties;
+
+import javax.mail.AuthenticationFailedException;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.SendFailedException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.sun.mail.smtp.SMTPAddressFailedException;
+
+
+public class EmailAction {
+	
+	
+	public void checkActiveEmail(final String userEmail, final String userPassword, HttpServletRequest req, HttpServletResponse resp) throws AuthenticationFailedException, IOException, ServletException{
+		 try{
+			 //if user enters empty authentication throw an error
+			if (userEmail=="" && userPassword=="")
+			{
+				throw new AuthenticationFailedException();
+			}
+			
+			 //this will be the message sent after user logs in
+	         final String emailMessage ="Thanks for using Send email app";
+	         
+	         /*This sets the properties of the email to only send
+	          *messages to Gmail accounts 
+	          */
+	         System.out.println("TLSEmail Start");
+	         Properties props = new Properties();
+	         props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
+	         props.put("mail.smtp.port", "587"); //TLS Port
+	         props.put("mail.smtp.auth", "true"); //enable authentication
+	         props.put("mail.smtp.starttls.enable", "true"); //enable STARTTLS
+	         
+	         //create Authenticator object to pass in Session.getInstance argument
+	         Authenticator auth = new Authenticator() {
+	             //override the getPasswordAuthentication method
+	        	 protected PasswordAuthentication getPasswordAuthentication() {
+	                 return new PasswordAuthentication(userEmail, userPassword);
+	             }
+	         };
+	         
+	         Session session = Session.getInstance(props, auth);
+	         
+	       //send test email when user logs in to check validity(real email address)
+	         MimeMessage message = new MimeMessage(session);
+	        
+	         message.setFrom(new InternetAddress(userEmail));
+	         message.addRecipient(Message.RecipientType.TO, new InternetAddress(userEmail));
+	         message.setSubject("Welcome new user");
+	         message.setText(emailMessage);
+	         Transport.send(message);
+	         System.out.println("Mail Sent");
+	         
+	         //this will set the attributes that will be used in officialIndex.jsp
+	         req.setAttribute("userEmailId", userEmail); // This will be available as ${message}
+	         req.setAttribute("uPassW", userPassword);
+	 	     req.setAttribute("visibleVal", "hidden");
+	 	     //req.setAttribute("submitVal", true);
+	 	     req.setAttribute("disableDestinationEmail","enable");
+	 	     req.getRequestDispatcher("officialIndex.jsp").forward(req, resp);	
+	     }catch(AuthenticationFailedException afe)
+	     {
+	    	 
+	    	 //If user logs in with invalid gmail email address set attributes accordingly  
+	    	 System.out.println("Comon man; put in your correct credentials");
+	    	 req.setAttribute("userEmailId", "Invalid Username/Password");
+	    	 
+	    	 //will not submit form and display invalid username/password combo message
+	    	 req.setAttribute("visibleVal", "visable"); // This will be available as ${visableVal}
+	    	 //req.setAttribute("submitVal",false); //check validation on login submit
+	    	 
+	    	  //disable input fields if initial email is not sent
+	    	 req.setAttribute("disableDestinationEmail","disabled");
+	 	     req.getRequestDispatcher("officialIndex.jsp").forward(req, resp);	
+	     }
+		 
+		 catch(Exception ex){
+	         System.out.println("Mail fail");
+	         System.out.println(ex);
+	     }
+		}
+	
+/*
+ * this method will send an email after the user logs in and specifies toEmailAddress, Subject and message
+ */
+	public void sendRealEmail(final String fromEmail, final String password, final String destinationEmail, final String subject, 
+			final String messageBody, HttpServletRequest req, HttpServletResponse resp)
+	{
+		 try{
+	         System.out.println("TLSEmail Start");
+	         Properties props = new Properties();
+	         props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
+	         props.put("mail.smtp.port", "587"); //TLS Port
+	         props.put("mail.smtp.auth", "true"); //enable authentication
+	         props.put("mail.smtp.starttls.enable", "true"); //enable STARTTLS
+	         
+	         //create Authenticator object to pass in Session.getInstance argument
+	         Authenticator auth = new Authenticator() {
+	             //override the getPasswordAuthentication method
+	            
+	        	 protected PasswordAuthentication getPasswordAuthentication() {
+	                 return new PasswordAuthentication(fromEmail, password);
+	             }
+	         };
+	         
+	         Session session = Session.getInstance(props, auth);
+	         
+	       //send test email when user logs in to check validity(real email address)
+	         MimeMessage message = new MimeMessage(session);
+	         message.setFrom(new InternetAddress(fromEmail));
+	         message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinationEmail));
+	         message.setSubject(subject);
+	         message.setText(messageBody);
+
+	         Transport.send(message);
+	         System.out.println("Mail Sent");
+	         
+	         req.getRequestDispatcher("emailSentSucessful.jsp").forward(req, resp);	
+	         
+	     }catch (SMTPAddressFailedException sfe)
+	     {
+	    	 System.out.println("Mail fail");
+	     }
+		 catch(AuthenticationFailedException afe)
+	     {
+	    	 //if invalid email
+	    	 System.out.println("Comon man; put in your correct credentials");
+	     }
+		 
+		 catch(Exception ex){
+			 //address email will not be sent
+	         System.out.println("Mail fail");
+	         System.out.println(ex);
+	     }
+	}
+}
