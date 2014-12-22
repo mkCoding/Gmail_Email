@@ -1,0 +1,23 @@
+*Gmail Email Project*
+
+What was used to develop the application:
+
+Eclipse (Keplar)
+JSP, Servlets, JavaMail API, JQuery
+Apache Server
+
+Summary:
+
+This is a dynamic web project allows users to login to their gmail accounts and send an email to any other gmail account.
+
+How to use:
+
+Simply login to the application with your valid gmail address and password. 
+Next enter in a valid destination email, a subject and a message
+Then press the Send Email button to send the email.
+
+Notes:
+The current implimentation does not check if the email has been delivered to the sender
+If user enters an invalid destination address it will not be detected by the program
+
+The application will be online soon
