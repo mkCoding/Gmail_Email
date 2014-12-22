@@ -4,7 +4,7 @@ What was used to develop the application:
 
  Eclipse (Keplar)
  JSP, Servlets, JavaMail API, JQuery
- Apache Server
+ Apache Tomcat Server
 
 Summary:
 
