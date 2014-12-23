@@ -17,14 +17,15 @@ How to use:
 http://sendanemailapp.appspot.com
 
  2. Simply login to the application with your valid gmail address and password. 
-    a. You can only send emails after a valid gmail login
-    
+
  3. Next enter in a valid destination email, a subject and a message
  
  4. Then press the Send Email button to send the email.
  
 Notes:
- The current implimentation does not check if the email has been delivered to the sender
+ You can only send emails after a valid gmail login
+ 
+ The current implementation does not check if the email has been delivered to the sender
  If user enters an invalid destination address it will not be detected by the program
 
  The application will be online soon
